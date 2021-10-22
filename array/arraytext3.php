@@ -20,10 +20,16 @@
         $i++;
     }
 
-    echo "<pre>";
-    print_r($nums);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($nums);
+    // echo "</pre>";
     echo "迴圈次數：".$i;
+    echo "<hr>";
+    foreach($nums as $num){
+        echo "<div>".$num . ",". "</div>";
+    }
+    echo "<hr>";
+    echo "第二區號碼：".rand(1,8);
     ?>
 </body>
 </html>
