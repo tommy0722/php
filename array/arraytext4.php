@@ -15,9 +15,15 @@ for($i=$years;$i<=($years+500);$i++){
         $leaps[]=$i;
 }
 }
-echo "<pre>";
-echo print_r($leaps);
-echo "</pre>";
+$i=2152;
+// echo "<pre>";
+// echo print_r($leaps);
+// echo "</pre>";
+if(in_array($i,$leaps)){
+    echo $i . "是閏年";
+}else{
+    echo $i . "不是閏年";
+}
 ?>
 </body>
 </html>
