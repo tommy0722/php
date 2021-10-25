@@ -16,6 +16,7 @@
     echo $sub . "...";
     echo "<br>";
     echo $sub . str_repeat(".",3);
+    // 如果用中文字串 substr必須是3個倍數，才能組成一個中文字
     ?>
 </body>
 </html>
