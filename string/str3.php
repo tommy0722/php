@@ -17,7 +17,10 @@
     echo "<br>";
     echo $sub . str_repeat(".",3);
     // 如果用中文字串 substr必須是3個倍數，才能組成一個中文字，所以我們用mb_substr
-    
+    echo "<br>";
+    $str="失焦的罷免機制，是民主修復的雙面刃";
+    $sub=mb_substr($str,0,5);
+    echo $sub;
     ?>
 </body>
 </html>
