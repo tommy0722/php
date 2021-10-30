@@ -27,16 +27,16 @@
         <li>嘗試以block box或flex box的方式製作月曆</li>
     </ul>
     <?php
-    echo "<table>";
-    echo    "<tr>";
-    echo    "<td>日</td>";
-    echo    "<td>一</td>";
-    echo    "<td>二</td>";
-    echo    "<td>三</td>";
-    echo    "<td>四</td>";
-    echo    "<td>五</td>";
-    echo    "<td>六</td>";
-    echo    "</tr>";
+    echo "<table>",
+        "<tr>",
+        "<td>日</td>",
+        "<td>一</td>",
+        "<td>二</td>",
+        "<td>三</td>",
+        "<td>四</td>",
+        "<td>五</td>",
+        "<td>六</td>",
+        "</tr>";
     for($i=0;$i<6;$i++){
         echo "<tr>";
         for($j=0;$j<7;$j++){
