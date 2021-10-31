@@ -33,6 +33,9 @@
     </style>
 </head>
 <body>
+    <form action="">
+        <select name="" id="">1</select>
+    </form>
     <?php
     $years=date('Y');
     $month=date('m');
@@ -41,6 +44,12 @@
     $week=date('w',strtotime("$years-$month-1"));
     // 真正的第一天
     $first=1-$week;
+
+    // 測試
+    // for($i=1900;$i<2050;$i++){
+    //     $i;
+    // }
+    // 測試結束
     $weeks=["日","一","二","三","四","五","六"];
     echo "<H1>$years 年 $month 月萬年曆</H1>";
     echo "<table>";
