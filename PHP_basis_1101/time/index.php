@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <style>
+    <style>
     *{
         text-align: center;
     }
     h1{
+
         color: #555;
     }
     a{
@@ -30,12 +31,14 @@
         font-weight: bold;
     }
         
-    </style> -->
+    </style>
 </head>
 <body>
     <form action="">
         <select name="" id="">1</select>
     </form>
+    <?php session_start();?>
+    <h3><?=$_SESSION['name'];?></h3>
     <?php
     $years=date('Y');
     $month=date('m');
@@ -73,7 +76,9 @@ for($i=$first;$i<=$day;){
 }
     
 echo "</table>";
+
     ?>
-    
+<a href="index.php?year=">上個月</a>    
+<a href="index.php?year=">下個月</a>    
 </body>
 </html>
