@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+    <!-- <style>
     *{
         text-align: center;
     }
@@ -30,7 +30,7 @@
         font-weight: bold;
     }
         
-    </style>
+    </style> -->
 </head>
 <body>
     <form action="">
