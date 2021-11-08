@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['user'])){
-    header('localtion:mem_center.php')
+    header('localtion:mem_center.php');
 }
 ?>
 
