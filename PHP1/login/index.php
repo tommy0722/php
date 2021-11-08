@@ -1,3 +1,12 @@
+<?php
+if(isset($_SESSION['user'])){
+    header('localtion:mem_center.php')
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,25 +26,14 @@
 </head>
 
 <body>
-    
     <div>
-        <form action="result.php" method="post">
-            <!-- <?php
-            if (!empty($_POST)){
-            $acc = $_POST['acc'];
-            $pw = $_POST['pw'];
-
-            if ($acc == 'tommy' && $pw == '1234') {
-                echo '帳號密碼正確';
-                echo '<br>';
-                echo '登入成功';
-            } else {
-                echo '帳號密碼錯誤';
-                echo '<br>';
-                echo '登入失敗';
-            }
-            }
-            ?> -->
+        <h1>使用cookie登入並記錄登入狀態</h1>
+        <form action="check_login.php" method="post">
+        <?php
+        if(isset($_GET['status']) && $_GET){
+            echo "<span style='color:red'>帳號密碼錯誤</span>";
+        }
+        ?>
             <p>帳號：<input type="text" name="acc"></p>
             <p>密碼：<input type="password" name="pw"></p>
             <p><input type="submit" value="登入"><input type="reset" value="取消"></p>
