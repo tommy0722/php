@@ -7,9 +7,15 @@
     <title>會員中心</title>
 </head>
 <body>
+    
     歡迎
     <?php
-    echo $_COOKIE['user'];
+    session_start();
+    if(isset($_COOKIE['user'])){
+        echo $_COOKIE['user'];
+    }else{
+        echo $_SESSION['user'];
+    }
     ?>
     登入
 </body>

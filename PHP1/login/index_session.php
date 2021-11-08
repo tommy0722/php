@@ -27,8 +27,9 @@ if(isset($_SESSION['user'])){
 
 <body>
     <div>
-        <h1>使用cookie登入並記錄登入狀態</h1>
-        <form action="check_login.php" method="post">
+        <!-- <h1>使用cookie登入並記錄登入狀態</h1> -->
+        <h1>使用SESSION登入並記錄登入狀態</h1>
+        <form action="check_login_session.php" method="post">
         <?php
         if(isset($_GET['status']) && $_GET){
             echo "<span style='color:red'>帳號密碼錯誤</span>";
