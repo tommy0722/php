@@ -42,7 +42,6 @@ if($month<=1){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-   
     <title>萬年曆</title>
     <style>
     h1,h2{

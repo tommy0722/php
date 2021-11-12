@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>線上月曆</title>
     <style>
-        .dayoff{
-            background-color:pink;
-        }
-        .special-date{
-            background-color:black;
-            color:white;
-        }
+    .dayoff {
+        background-color: pink;
+    }
+    .special-date {
+        background-color: black;
+        color: white;
+    }
     </style>
 </head>
 <body>
     <h1>線上月曆</h1>
-    
+    <style>
+    .cell {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #999;
+        /* display:inline-block; */
+        margin: 0;
+        box-sizing: border-box;
+    }
 
-<style>
-.cell{
-    width:50px;
-    height:50px;
-    border:1px solid #999;
-    /* display:inline-block; */
-    margin:0;
-    box-sizing:border-box;
-}
-
-.calendar{
-    width:352px;
-    height:352px;
-    margin:auto;
-    border:1px solid red;
-    box-sizing:border-box;
-    display:flex;
-    flex-wrap:wrap;
-    align-content:start;
-    justify-content:start;
-}
-
-</style>
-<?php
+    .calendar {
+        width: 352px;
+        height: 352px;
+        margin: auto;
+        border: 1px solid red;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: start;
+        justify-content: start;
+    }
+    </style>
+    <?php
     $specialDate=['2021-11-15'=>'發薪水','2021-12-25'=>'聖誕節'];
    //echo $specialDate['2011-11-11'];
 /*     $firstDay=date("Y-m-01");
@@ -84,7 +82,6 @@
                 $nextyear=$year+1;
             }
         }elseif($_GET['month']<=0){
-            
             $month=12;
             $year=date("Y")-1;
         }else{
@@ -105,15 +102,11 @@
         if($month==1){
             $lastmonth=12;
             $lastyear=$year-1;
-
             $nextmonth=$month+1;
             $nextyear=$year;
-
         }else if($month==12){
-
             $lastmonth=$month-1;
             $lastyear=$year;
-            
             $nextmonth=1;
             $nextyear=$year+1;
         }
@@ -137,20 +130,17 @@
     for($i=0;$i<$monthDays;$i++){ //決定當月有幾周
         $td[]=($i+1);
     }
-   for($i=0;$i<$lastWeekWhiteDays;$i++){
+    for($i=0;$i<$lastWeekWhiteDays;$i++){
         $td[]="";
     }
-
     ?>
-
-<h3><?=$year;?>年<?=$month;?>月</h3>
- <div>
-     <a href="index.php?year=<?=$lastyear;?>&month=<?=$lastmonth;?>">上一個月</a>
-     <a href="index.php?year=<?=$nextyear;?>&month=<?=$nextmonth;?>">下一個月</a>
-</div>   
-<div class="calendar">
-    
-<?php
+    <h3><?=$year;?>年<?=$month;?>月</h3>
+    <div>
+        <a href="index.php?year=<?=$lastyear;?>&month=<?=$lastmonth;?>">上一個月</a>
+        <a href="index.php?year=<?=$nextyear;?>&month=<?=$nextmonth;?>">下一個月</a>
+    </div>
+    <div class="calendar">
+        <?php
 $w=0;
 
 //月曆頭的地方
@@ -168,10 +158,8 @@ for($i=0;$i<$allCells;$i++){
     }
     
     if($w==0 || $w==6){
-
         echo "<div class='dayoff cell'>";
     }else{
-
         echo "<div class='cell'>";
     }
     echo $td[$i];
@@ -180,11 +168,7 @@ for($i=0;$i<$allCells;$i++){
     }
     echo "</div>";
 }
-
 ?>
-</div>
+    </div>
 </body>
 </html>
-
-
-

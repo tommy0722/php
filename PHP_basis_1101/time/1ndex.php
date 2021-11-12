@@ -47,7 +47,6 @@
     $week=date('w',strtotime("$years-$month-1"));
     // 真正的第一天
     $first=1-$week;
-
     // 測試
     // for($i=1900;$i<2050;$i++){
     //     $i;
