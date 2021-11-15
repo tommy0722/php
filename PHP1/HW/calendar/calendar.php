@@ -1,12 +1,6 @@
 <?php
-$years = date("Y");
-$month = date("m");
-// 每個月幾天
-$days = date("t", strtotime("$years-$month-1"));
-$firstday = date("Y-m-1");
-$week = date("w", strtotime("$years-$month-1"));
-// 第一天的位置
-$first = 1 - $week;
+
+
 
 // echo "$years <br>";
 // echo "$month<br>";
@@ -14,18 +8,18 @@ $first = 1 - $week;
 // echo "$firstday<br>";
 // echo "$week<br>";
 $weekend = ["日", "一", "二", "三", "四", "五", "六"];
+if(isset($_GET['month'])){
+    $month=$_GET['month'];
+    $years=$_GET['years'];
+}else{
+    $month=date("m");
+    $years=date("Y");
+}
+
 $lastmonth = $month - 1;
 $nextmonth = $month + 1;
 $lastyears = $years;
 $nextyears = $years;
-if(isset($_GET['month'])){
-    $month=$_GET['month'];
-    $year=$_GET['year'];
-}else{
-    $month=date("m");
-    $year=date("Y");
-}
-
 
 if ($month == 12) {
     $lastmonth = $month - 1;
@@ -39,6 +33,14 @@ if ($month == 12) {
     $nextmonth = $month + 1;
     $nextyears = $years;
 }
+
+
+// 每個月幾天
+$days = date("t", strtotime("$years-$month-01"));
+$firstday = date("$years-$month-01");
+$week = date("w", strtotime("$years-$month-01"));
+// 第一天的位置
+$first = 1 - $week;
 
 ?>
 
@@ -76,10 +78,11 @@ if ($month == 12) {
             echo "</tr>";
         }
 
+
         ?>
     </table>
-    <a href="index.php?years<?=$lastyears; ?>&month<?= $lastmonth; ?>">上個月</a>
-    <a href="index.php?years<?=$nextyears; ?>&month<?= $nextmonth; ?>">下個月</a>
+    <a href="calendar.php?years=<?=$lastyears; ?>&month=<?= $lastmonth; ?>">上個月</a>
+    <a href="calendar.php?years=<?=$nextyears; ?>&month=<?= $nextmonth; ?>">下個月</a>
 </body>
 
 </html>

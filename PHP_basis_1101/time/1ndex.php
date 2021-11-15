@@ -1,16 +1,60 @@
+<?php
+// 某年
+$year=isset($_GET['y'])?$_GET{'y'}:date('Y',time());
+
+// 某月
+$month=isset($_GET['m'])?$_GET['m']:date('n',time());
+
+// 本月總天數
+$days=date('t',strtotime("{$year}-{$month}-1"));
+
+// 本月1號是周幾
+$week=date('w',strtotime("{$year}-{$month}-1"));
+
+// 真正的第一天
+$first=1-$week;
+
+echo $first;
+
+//月數大於12月年+1，月變成1月
+if($month>=12){
+    //下一年和下一月
+    $nextYear=$year+1;
+    $nextMonth=1;
+}else{
+    //下一年和下一月
+    $nextYear=$year;
+    $nextMonth=$month+1;
+}
+//月數小於1月份時，則年-1，月變成12月
+if($month<=1){
+    //下一年和下一月
+    $prevYear=$year-1;
+    $prevMonth=12;
+}else{
+    //下一年和下一月
+    $prevYear=$year;
+    $prevMonth=$month-1;
+}
+?>
+
+<body>
+    
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   
+    <title>萬年曆</title>
     <style>
-    *{
+    h1,h2{
         text-align: center;
     }
     h1{
-
         color: #555;
     }
     a{
@@ -18,7 +62,7 @@
     }
     table{
         margin: 0 auto;
-        width: 500px;
+        width: 1000px;
         border: 2px solid #272822;
         border-collapse: collapse;
     }
@@ -30,54 +74,39 @@
         color:#c00;
         font-weight: bold;
     }
-        
     </style>
 </head>
 <body>
-    <form action="">
-        <select name="" id="">1</select>
-    </form>
-    <?php session_start();?>
-    <h3><?=$_SESSION['name'];?></h3>
-    <?php
-    $years=date('Y');
-    $month=date('m');
-    $day=date('t');
-    // 本月1號是周幾
-    $week=date('w',strtotime("$years-$month-1"));
-    // 真正的第一天
-    $first=1-$week;
-    // 測試
-    // for($i=1900;$i<2050;$i++){
-    //     $i;
-    // }
-    // 測試結束
-    $weeks=["日","一","二","三","四","五","六"];
-    echo "<H1>$years 年 $month 月萬年曆</H1>";
-    echo "<table>";
-    echo "<tr>";
-    for($i=0;$i<7;$i++){
-        echo"<th>$weeks[$i]</th>";
-    }
+    <h1>萬年曆-<?php echo $year ?>年-<?php echo $month ?>月</h1>
+    <table>
+        <tr>
+            <th>週日</th>
+            <th>週一</th>
+            <th>週二</th>
+            <th>週三</th>
+            <th>週四</th>
+            <th>週五</th>
+            <th>週六</th>
+        </tr>
+       <?php 
+       for($i=$first;$i<=$days;){
+            echo '<tr>';
+            for($j=0;$j<7;$j++){
+                if($i<=$days && $i>=1){
+                    echo "<td>{$i}</td>";
+                }else{
+                    echo "<td>$nbsp</td>";
+                }
+                $i++;
+            }
+            echo '</tr>';
 
-    echo "</tr>";
-for($i=$first;$i<=$day;){
-    echo "<tr>";
-    for($j=0;$j<7;$j++){
-        if($i<=$day and $i>0){
-            echo "<td>$i</td>";
-        }else{
-            echo "<td>&nbsp;</td>";
-        }
-        $i++;
-    }
-    echo '</tr>';
-}
-    
-echo "</table>";
-
-    ?>
-<a href="index.php?year=">上個月</a>    
-<a href="index.php?year=">下個月</a>    
+       }
+       ?>
+    </table>
+    <h2>
+        <a href="index.php?y=<?php echo $prevYear ?>&m=<?php echo $prevMonth ?>">上一月</a>
+        <a href="index.php?y=<?php echo $nextYear ?>&m=<?php echo $nextMonth ?>">下一月</a>
+    </h2>
 </body>
 </html>
