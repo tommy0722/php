@@ -12,17 +12,16 @@
 <body>
 <?php include "header.html";?>
     
-    <nav>
-    <a href="file01.php">file01.php</a>
-    <a href="file02.php">file02.php</a>
-    <a href="file03.php">file03.php</a>
-    </nav>
+<?php 
+if(isset($_GET['do'])){
+    include "nav.php";
+}
+    ?>
+
     <div class="body">
         file02的內容
     </div>
-    <footer>
-        110php 資料庫
-    </footer>
+    <?php include "footer.php";?>
 </body>
 
 </html>

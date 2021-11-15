@@ -10,12 +10,17 @@
 </head>
 
 <body>
-<?php include "header.html";?>
+    <?php include "header.html"; ?>
     
-<?php include "nav.php";?>
-
+    <?php
+    if(isset($_GET['do'])){
+        include "nav.php"; 
+    }
+    
+    ?>
     <div class="body">
-        file03的內容
+        file02的內容
+
     </div>
     <?php include "footer.php";?>
 </body>
