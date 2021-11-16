@@ -52,12 +52,35 @@ $first = 1 - $week;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆</title>
+    <style>
+    table,tr,td{
+        border: 1px solid black ;
+        text-align:center;
+    }
+    table{
+        width: 50%;
+        height: 50%;
+
+    }
+    *{
+        margin:0px auto ;
+        text-align:center;
+    }
+    header>h1{
+        margin:0px auto ;
+    }
+    </style>
 </head>
 
 <body>
+<header>
     <h1><?= $years ?>年<?= $month ?>月</h1>
+</header>
+    <a href="calendar.php?years=<?=$lastyears; ?>&month=<?= $lastmonth; ?>">上個月</a>
+    <a href="calendar.php?years=<?=$nextyears; ?>&month=<?= $nextmonth; ?>">下個月</a>
     <table>
         <tr>
+        
             <?php
             for ($i = 0; $i < 7; $i++) {
                 echo "<td>$weekend[$i]</td>";
@@ -69,7 +92,12 @@ $first = 1 - $week;
             echo '<tr>';
             for ($j = 0; $j < 7; $j++) {
                 if ($i <= $days and $i > 0) {
-                    echo "<td>{$i}</td>";
+                    
+                    if($j==0 or $j==6){
+                        echo "<td style='background-color:red;'>{$i}</td>";
+                    }elseif($j>0 and $j<6){
+                        echo "<td>{$i}</td>";
+                    }
                 } else {
                     echo "<td>&nbsp;</td>";
                 }
@@ -81,8 +109,7 @@ $first = 1 - $week;
 
         ?>
     </table>
-    <a href="calendar.php?years=<?=$lastyears; ?>&month=<?= $lastmonth; ?>">上個月</a>
-    <a href="calendar.php?years=<?=$nextyears; ?>&month=<?= $nextmonth; ?>">下個月</a>
+    
 </body>
 
 </html>
