@@ -52,8 +52,11 @@ $first = 1 - $week;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <style>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        .main{
+            background-image: url(./SAO/ymu.jpg);
+        }
         table,
         tr,
         td {
@@ -75,10 +78,10 @@ $first = 1 - $week;
         header>h1 {
             margin: 0px auto;
         }
-    </style> -->
+    </style>
 </head>
 
-<body>
+<body class="main">
     <header>
         <h1><?= $years ?>年<?= $month ?>月</h1>
     </header>
@@ -88,10 +91,12 @@ $first = 1 - $week;
     <form action="./calendar.php" method="GET">
         <select name="years" style="font-size:24px;width: 10%;">
             <?php
-            echo "<option value='$years'>$years</option>";
+            // echo "<option value='$years' selected>$years</option>";
             for ($i = 1900; $i <= 2400; $i++) {
                 $nextyears = $i;
-                if ($nextyears != $years) {
+                if ($nextyears == $years) {
+                    echo "<option value='$nextyears' selected>$nextyears</option>";
+                }else{
                     echo "<option value='$nextyears'>$nextyears</option>";
                 }
             }
@@ -100,10 +105,11 @@ $first = 1 - $week;
         </select>
         <select name="month" style="font-size:24px;width: 10%;">
             <?php
-            echo "<option value='$month'>$month</option>";
             for ($i = 1; $i <= 12; $i++) {
                 $nextmonth = $i;
-                if ($nextmonth != $month) {
+                if ($nextmonth == $month) {
+                    echo "<option value='$nextmonth' selected>$nextmonth</option>";
+                }else{
                     echo "<option value='$nextmonth'>$nextmonth</option>";
                 }
             }

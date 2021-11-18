@@ -1,22 +1,22 @@
+body {
+    background-color: red;
+}
 
-        table,
-        tr,
-        td {
-            border: 1px solid black;
-            text-align: center;
-        }
+table, tr, td {
+    border: 1px solid black;
+    text-align: center;
+}
 
-        table {
-            width: 50%;
-            height: 50%;
+table {
+    width: 50%;
+    height: 50%;
+}
 
-        }
+* {
+    margin: 0px auto;
+    text-align: center;
+}
 
-        * {
-            margin: 0px auto;
-            text-align: center;
-        }
-
-        header>h1 {
-            margin: 0px auto;
-        }
+header>h1 {
+    margin: 0px auto;
+}
