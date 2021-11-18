@@ -8,12 +8,12 @@
 // echo "$firstday<br>";
 // echo "$week<br>";
 $weekend = ["日", "一", "二", "三", "四", "五", "六"];
-if(isset($_GET['month'])){
-    $month=$_GET['month'];
-    $years=$_GET['years'];
-}else{
-    $month=date("m");
-    $years=date("Y");
+if (isset($_GET['month'])) {
+    $month = $_GET['month'];
+    $years = $_GET['years'];
+} else {
+    $month = date("m");
+    $years = date("Y");
 }
 
 $lastmonth = $month - 1;
@@ -29,7 +29,7 @@ if ($month == 12) {
 } elseif ($month == 1) {
     $lastmonth = 12;
     $lastyears = $years - 1;
-    
+
     $nextmonth = $month + 1;
     $nextyears = $years;
 }
@@ -52,35 +52,68 @@ $first = 1 - $week;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆</title>
-    <style>
-    table,tr,td{
-        border: 1px solid black ;
-        text-align:center;
-    }
-    table{
-        width: 50%;
-        height: 50%;
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
 
-    }
-    *{
-        margin:0px auto ;
-        text-align:center;
-    }
-    header>h1{
-        margin:0px auto ;
-    }
-    </style>
+        table {
+            width: 50%;
+            height: 50%;
+
+        }
+
+        * {
+            margin: 0px auto;
+            text-align: center;
+        }
+
+        header>h1 {
+            margin: 0px auto;
+        }
+    </style> -->
 </head>
 
 <body>
-<header>
-    <h1><?= $years ?>年<?= $month ?>月</h1>
-</header>
-    <a href="calendar.php?years=<?=$lastyears; ?>&month=<?= $lastmonth; ?>">上個月</a>
-    <a href="calendar.php?years=<?=$nextyears; ?>&month=<?= $nextmonth; ?>">下個月</a>
+    <header>
+        <h1><?= $years ?>年<?= $month ?>月</h1>
+    </header>
+    <a href="calendar.php?years=<?= $lastyears; ?>&month=<?= $lastmonth; ?>">上個月</a>
+    <a href="calendar.php?years=<?= $nextyears; ?>&month=<?= $nextmonth; ?>">下個月</a>
+
+    <form action="./calendar.php" method="GET">
+        <select name="years" style="font-size:24px;width: 10%;">
+            <?php
+            echo "<option value='$years'>$years</option>";
+            for ($i = 1900; $i <= 2400; $i++) {
+                $nextyears = $i;
+                if ($nextyears != $years) {
+                    echo "<option value='$nextyears'>$nextyears</option>";
+                }
+            }
+            ?>
+            <label for="username">年</label>
+        </select>
+        <select name="month" style="font-size:24px;width: 10%;">
+            <?php
+            echo "<option value='$month'>$month</option>";
+            for ($i = 1; $i <= 12; $i++) {
+                $nextmonth = $i;
+                if ($nextmonth != $month) {
+                    echo "<option value='$nextmonth'>$nextmonth</option>";
+                }
+            }
+            ?>
+            <label for="username">月</label>
+        </select>
+        <input type="submit" value="submit">
+    </form>
     <table>
         <tr>
-        
             <?php
             for ($i = 0; $i < 7; $i++) {
                 echo "<td>$weekend[$i]</td>";
@@ -92,10 +125,9 @@ $first = 1 - $week;
             echo '<tr>';
             for ($j = 0; $j < 7; $j++) {
                 if ($i <= $days and $i > 0) {
-                    
-                    if($j==0 or $j==6){
+                    if ($j == 0 or $j == 6) {
                         echo "<td style='background-color:red;'>{$i}</td>";
-                    }elseif($j>0 and $j<6){
+                    } elseif ($j > 0 and $j < 6) {
                         echo "<td>{$i}</td>";
                     }
                 } else {
@@ -109,7 +141,7 @@ $first = 1 - $week;
 
         ?>
     </table>
-    
+
 </body>
 
 </html>
