@@ -2,7 +2,7 @@
 
 
 
-        <a href="dashboard.php">會員中心</a>
+        <a href="index.php">回首頁</a>
         <a href="forgot.php">忘記密碼</a>
         <a href="edit_user.php">編輯會員資料</a>
         <a href="reg.php"><button>註冊新會員</button></a>

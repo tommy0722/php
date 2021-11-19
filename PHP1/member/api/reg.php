@@ -1,6 +1,7 @@
 <?php
 $account=$_POST['account'];
 $password=$_POST['password'];
+// $password=md5($_POST['password']);
 $mail=$_POST['mail'];
 $name=$_POST['name'];
 $address=$_POST['address'];
@@ -18,5 +19,18 @@ $pdo=new PDO($dsn,'root','');
 // $pdo->exec($sql_account);
 // $pdo->exec($sql_member);
 
-header("localtion:../index.php")
+header("localtion:../index.php");
+
+
+// setcookie("account",$account,time()+60);
+// setcookie("password",$password,time()+60);
+// setcookie("mail",$mail,time()+60);
+// setcookie("name",$name,time()+60);
+// setcookie("address",$address,time()+60);
+// setcookie("mobile",$mobile,time()+60);
+// setcookie("birthday",$birthday,time()+60);
+
+
+
+
 ?>

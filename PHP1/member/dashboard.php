@@ -12,7 +12,22 @@
  <?php include "./include/nav.php";?>
  <?php include "./include/side_bar.php";?>
 <div class="content">
-會員中心
+<h3>會員中心</h3>
+<?=$_GET=['user'];?> xxx歡迎你：
+<?php
+$dsn="mysql:host=localhost;chartset=utf8;dbname=member";
+$pdo=new PDO($dsn,'root','');
+$sql="SELECT *FROM `account` WHERE `account` .`id`=`member`.`id`&&`account`.`account`={$_GET['user']}";
+
+// echo "個人資料：$_COOKIE["name"];";
+// echo "帳號：$_COOKIE["account"];";
+// echo "地址：$_COOKIE["address"];";
+// echo "電話：$_COOKIE["mobile"];";
+// echo "mail：$_COOKIE["mail"];";
+// echo "生日：$_COOKIE["birthday"];";
+?>
+
+
 
 </div>
 
