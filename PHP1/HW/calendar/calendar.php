@@ -50,6 +50,22 @@ $first = 1 - $week;
 //     }
 // }
 
+$Engmonth = [
+    '',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'Decemeer'
+];
+// echo "<h1 class='h1'>$Engmonth[$month]</h1>";
 ?>
 
 <!DOCTYPE html>
@@ -64,17 +80,17 @@ $first = 1 - $week;
 
 </head>
 
-<body style="background:url(SAO/sao-<?= $month ?>.jpg)" class="main">
+<body style="background:url(./SAO/sao-<?= $month ?>.jpg)" class="main">
 
     <aside class="aside ">
         <header class="header">
-            <h1><?= $years ?>年</h1>
-            <h3><?= $month ?>月</h3>
+            <h1><?= $years ?></h1>
+            <h3><?= $Engmonth[$month] ?></h3>
         </header>
         <footer class="footer">
             <form action="./calendar.php" method="GET">
                 <h4>years：</h4>
-                <select name="years" style="font-size:20px;width: 50%;background-color:lightblue">
+                <select name="years" style="font-size:20px;width: 50%;background-color:lightblue;border-radius: 15px;">
                     <?php
                     // echo "<option value='$years' selected>$years</option>";
                     for ($i = 1900; $i <= 2400; $i++) {
@@ -92,7 +108,7 @@ $first = 1 - $week;
                 <br>
 
                 <h4>month：</h4>
-                <select name="month" style="font-size:20px;width: 50%;background-color:lightblue">
+                <select name="month" style="font-size:20px;width: 50%;background-color:lightblue;border-radius: 15px;">
                     <?php
                     for ($i = 1; $i <= 12; $i++) {
                         $selemonth = $i;
@@ -108,26 +124,38 @@ $first = 1 - $week;
                     <label for="username">月</label>
                 </select>
                 <br><br>
-                <input type="submit" value="選擇" style="font-size:20px;width: 30%;background-color:lightblue">
+                <input type="submit" value="選擇" style="font-size:20px;width: 30%;background-color:lightblue;border-radius: 15px;">
             </form>
         </footer>
 
     </aside>
     <section class="section">
+        <?php
+        $quotations = [
+            '',
+            '一個好的程式設計師應該是那種過單行線都要往兩邊看的人。',
+            '程式有問題時不要擔心。如果所有東西都沒問題，你就失業',
+            '大部分人都知道通常一名工程師會具有的美德。當然了，有三種：懶惰、暴躁、傲慢。',
+            '用程式碼行數來評估程式的開發進度，就好比是拿重量來評估一個飛機的建造進度。',
+            '一個人寫的爛軟體將會給另一個人帶來一份全職工作。',
+            '沒能一次成功，那就叫它 1.0 版吧。',
+            '所有的工程師都是編劇，所有的電腦都是爛演員。',
+            '傻瓜都能寫出電腦能理解的程式。優秀的工程師寫出的是人類能讀懂的程式。',
+            '開發軟體和建造教堂非常相似——完工之後我們就開始祈禱。',
+            '世上只有兩類程式語言：那些被人罵翻的，以及那些沒人使用的。',
+            'Java 之於 JavaScript 的關係，就如同狗和熱狗。',
+            '電腦善於遵循指令，但不善於理解你的思維。'
+        ];
 
+        ?>
         <header class="header2">
-            <table class="null">
-                <tr>
-                    <td class="null1"><a href="calendar.php?years=<?= $lastyears; ?>&month=<?= $lastmonth; ?>">上個月</a></td>
-                    <td class="null1"><a href="calendar.php?years=<?= $nowyesrs; ?>&month=<?= $nowmonth; ?>">當月</a></td>
-                    <td class="null1"><a href="calendar.php?years=<?= $nextyears; ?>&month=<?= $nextmonth; ?>">下個月</a></td>
-
-                </tr>
-            </table>
-            <hr>
-        </header>
+        <h1 style="text-align: left;font-size:50px;">&emsp;<?=$month;?>月</h1>
+        <h1 class='h1'><?= $quotations[$month];?></h1>
         
+        </header>
         <div>
+
+        
             <table class="table">
                 <tr>
                     <?php
@@ -165,27 +193,17 @@ $first = 1 - $week;
                 ?>
             </table>
         </div>
-<br><br>
-        <?php
-        $quotations = [
-            '',
-            '一個好的工程師是那種過單行道馬路都要左顧右盼的人。',
-            '程式有問題時不要擔心。如果所有東西都沒問題，你就失業',
-            '大部分人都知道通常一名工程師會具有的美德。當然了，有三種：懶惰、暴躁、傲慢。',
-            '寫程式時要保持這種心態：就好像將來要維護你這些程式的人是一位殘暴的精神病患者，而且他知道你住在哪。',
-            '一個人寫的爛軟體將會給另一個人帶來一份全職工作。',
-            '沒能一次成功，那就叫它 1.0 版吧。',
-            '所有的工程師都是編劇，所有的電腦都是爛演員。',
-            '傻瓜都能寫出電腦能理解的程式。優秀的工程師寫出的是人類能讀懂的程式。',
-            '開發軟體和建造教堂非常相似——完工之後我們就開始祈禱。',
-            '世上只有兩類程式語言：那些被人罵翻的，以及那些沒人使用的。',
-            'Java 之於 JavaScript 的關係，就如同狗和熱狗。',
-            '電腦善於遵循指令，但不善於理解你的思維。'
-        ];
+        <footer class="footer2">
+            <table class="null">
+                <tr>
+                    <td class="null1"><a href="calendar.php?years=<?= $lastyears; ?>&month=<?= $lastmonth; ?>">上個月</a></td>
+                    <td class="null1"><a href="calendar.php?years=<?= $nowyesrs; ?>&month=<?= $nowmonth; ?>">當月</a></td>
+                    <td class="null1"><a href="calendar.php?years=<?= $nextyears; ?>&month=<?= $nextmonth; ?>">下個月</a></td>
 
-        echo "<h1 class='h1'>$quotations[$month]</h1>";
-
-        ?>
+                </tr>
+            </table>
+            
+        </header>
     </section>
 </body>
 
