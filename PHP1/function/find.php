@@ -1,8 +1,9 @@
 <?php
 
 echo "<pre>";
-print_r(find('students',103));
+print_r(find('students',11));
 echo "</pre>";
+
 
 function find($table,$id){
     $dsn="mysql:host=localhost;charset=utf8;dbname=students";
@@ -11,4 +12,6 @@ function find($table,$id){
 
     return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 }
+
+
 ?>

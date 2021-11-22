@@ -1,19 +1,25 @@
 <?php
-$rows=all('students');
-// echo "<pre>";
-// print_r(all('students'));
-// echo "</pre>";
+
+/* echo "<pre>";
+print_r(all('expenditure'));
+echo "</pre>"; */
+
+$rows=all('expenditure');
+
 
 foreach($rows as $row){
-    echo $row['name']."-".$row['telphone']."<br>";
+    echo $row['item']."-".$row['place']."<br>";
 }
-// 取出指定資料表的所有資料
+
+//取出指定資料表的所有資料
 function all($table){
     $dsn="mysql:host=localhost;charset=utf8;dbname=students";
     $pdo=new PDO($dsn,'root','');
     $sql="SELECT * FROM `$table`";
-    $row=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    return $row;
+    $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+    //return $pdo->query($sql)->fetchAll();
 }
+
 
 ?>

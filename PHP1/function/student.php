@@ -1,6 +1,9 @@
 <?php include_once "db.php";?>
 
+
 <?php
-$stu=find('students',105);
+
+$stu=find('students',23);
 echo $stu['name'];
+
 ?>
