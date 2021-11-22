@@ -49,6 +49,8 @@
     $month=date("m"); */
 
 
+
+
     //直接訪問本頁不帶值
     //訪問本頁帶月份值
     /* empty(1)=>false
@@ -132,6 +134,7 @@ for($i=0;$i<$allCells;$i++){
     $w=$i%7;
     if(is_numeric($td[$i])){
         $date=date("$year-$month-").$td[$i];
+        
     }
 
     if($w==0 || $w==6){
@@ -145,7 +148,8 @@ for($i=0;$i<$allCells;$i++){
     }
     echo "</div>";
 }
-
+echo var_dump($date);
+echo var_dump($specialDate);
 ?>
 </div>
 </body>
