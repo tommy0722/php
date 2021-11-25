@@ -4,7 +4,6 @@
     function find($table,$id){
         global $pdo;
         $sql="SELECT * FROM `$table` WHERE `id`='$id'";
-    
         return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
     //取出指定資料表的所有資料
