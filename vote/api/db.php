@@ -1,6 +1,7 @@
 <?php
-
+// 連結sql的字串指令
     $dsn="mysql:host=localhost;charset=utf8;dbname=mypolling";
+// 新建資料庫(連結路徑語言資料庫名稱,帳號,密碼)
     $pdo=new PDO($dsn,'root','');
 
     //取得符合條件的一筆資料
@@ -82,7 +83,6 @@ function all($table,...$arg){
     $sql="UPDATE `$table` SET $sql_set WHERE $sql_where ";
     echo $sql . "<br>";
     $pdo->exec($sql);
-
  }
 
 

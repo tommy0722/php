@@ -32,7 +32,10 @@
 </div>
 <div class="container">
 <?php
-
+// 三元運算式
+// 如果讀得到$_GET['do'] echo $_GET['do'] 讀不到 echo show_vote_list
+// 回傳的值為路徑+檔名,php
+// 如果$flie值存在，導入$file路徑，沒有則首頁
 $do=(isset($_GET['do']))?$_GET['do']:'show_vote_list';
 $file="./frontend/".$do.".php";
 if(file_exists($file)){
