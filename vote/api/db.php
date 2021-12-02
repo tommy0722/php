@@ -6,17 +6,21 @@
 
     //取得符合條件的一筆資料
     function find($table,$id){
+        // 全域變數呼叫$pdo
         global $pdo;
+        // sql語法 搜尋 全部的資料 從 變數$table(看帶甚麼值進去) 條件 (ex：id=1...)
         $sql="SELECT * FROM `$table` WHERE ";
-
+        // 如果變數id是陣列則：
         if(is_array($id)){
+            // 列出所有陣列內容，並用key，value方式執行
             foreach($id as $key=>$value){
+                // 變數tmp為陣列，裡面存著$key=value
                 $tmp[]="`$key`='$value'";
             }
-            
+            // implode：在陣列中加入字串
             $sql=$sql. implode(" AND ",$tmp);
         }else{
-           $sql=$sql . "`id`='$id'";
+            $sql=$sql . "`id`='$id'";
         }
 
         return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
@@ -25,33 +29,39 @@
     //計算符合條件的資料筆數
     function rows($table,$array){
         global $pdo;
+        // count 計算次數
         $sql="SELECT count(*) FROM `$table` WHERE ";
             foreach($array as $key=>$value){
                 $tmp[]="`$key`='$value'";
             }
             
             $sql=$sql. implode(" AND ",$tmp);
+            // 取得一個欄位資料
         return $pdo->query($sql)->fetchColumn();
     }
 
 
 
     //取出指定資料表的所有資料
+    // 語法，非固定數量的變數
 function all($table,...$arg){
     global $pdo;
     $sql="SELECT * FROM `$table` ";
+    // 如果$arg[0]存在
     if(isset($arg[0])){
+        // 如果$arg[0]是陣列
         if(is_array($arg[0])){
             foreach($arg[0] as $key=>$value){
                 $tmp[]="`$key`='$value'";
             }
             
             $sql=$sql."where " . implode(" AND ",$tmp);
+        // 因為不是陣列所以回傳字串
         }else{
             $sql=$sql.$arg[0];
         }
     }
-
+    
     if(isset($arg[1])){
         $sql=$sql.$arg[1];
     }
@@ -64,7 +74,7 @@ function all($table,...$arg){
 }
 
 
- function update($table,$column,$where){
+function update($table,$column,$where){
     global $pdo;
 
     $sql_set='';
@@ -132,4 +142,3 @@ function q($sql){
      print_r($array);
      echo "</pre>";
  }
-?>

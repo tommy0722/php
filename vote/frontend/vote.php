@@ -14,7 +14,6 @@ foreach ($options as $key => $opt) {
     echo "<li>";
     echo "<input type='radio' name='opt' value='{$opt['id']}'>";
     echo $opt['opt'];
-
     echo "</li>";
 }
 ?>
