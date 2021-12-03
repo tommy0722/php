@@ -67,28 +67,33 @@ function all($table,...$arg){
     }
     
     //echo $sql;
-    
+    // query：查詢，fetchAll(PDO::FETCH_ASSOC)：返回以欄位名稱作為索引鍵(key)的陣列(array)
     $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
     //return $pdo->query($sql)->fetchAll();
 }
 
 
+// 更新資料庫
 function update($table,$column,$where){
     global $pdo;
-
+    // 為一個空字串
     $sql_set='';
     foreach ($column as $key => $value) {
+        // 將陣列key,value轉成字串
         $sql_set=$sql_set . "`$key`='$value',";
+
     }
+    // trim：刪除不必要的符號(這裡刪除,)
     $sql_set=trim($sql_set,',');
 
     $sql_where='';
     foreach ($where as $key => $value) {
         $sql_where=$sql_where . "`$key`='$value' AND ";
     }
+    // 還在想怎麼註解
     $sql_where=mb_substr($sql_where,0,mb_strlen($sql_where)-5);;
-
+    // echo $sql_where;
     mb_substr($sql_where,0,mb_strlen($sql_where)-5);
     $sql="UPDATE `$table` SET $sql_set WHERE $sql_where ";
     echo $sql . "<br>";
