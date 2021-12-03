@@ -1,4 +1,5 @@
 <?php
+session_start();
 // 連結sql的字串指令
     $dsn="mysql:host=localhost;charset=utf8;dbname=mypolling";
 // 新建資料庫(連結路徑語言資料庫名稱,帳號,密碼)
