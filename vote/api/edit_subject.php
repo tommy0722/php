@@ -14,10 +14,11 @@ update('topics',['topic'=>$topic],['id'=>$topic_id]);
 $options=$_POST['options'];
 $opt_id=$_POST['opt_id'];
 foreach ($options as $key => $opt) {
-    if(array_key_exists($key,$opt_id)){
+    if($opt!=""){
         update('options',['opt'=>$opt],['id'=>$opt_id[$key]]);
+        // 如果為空字串則刪除
     }else{
-        insert('options',['opt'=>$opt,'topic_id'=>$topic_id]);
+        del('option',$opt_id[$key]);
     }
 
 }

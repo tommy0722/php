@@ -6,18 +6,17 @@ include_once "db.php";
  * 
  */
 
-$topic_array=['topic'=>$_POST['subject']];
-insert('topics',$topic_array);
-$topic_sql="select * from `topics` where `topic`='{$_POST['subject']}'";
+$topic_array = ['topic' => $_POST['subject']];
+insert('topics', $topic_array);
+$topic_sql = "select * from `topics` where `topic`='{$_POST['subject']}'";
 echo $topic_sql;
-$topic=$pdo->query($topic_sql)->fetch();
+$topic = $pdo->query($topic_sql)->fetch();
 
 
-foreach($_POST['options'] as $opt){
-
-    $opt_array=["opt"=>$opt,"topic_id"=>$topic['id']];
-    insert('options',$opt_array);
-
+foreach ($_POST['options'] as $opt) {
+    // 如果資料表不是空白則新增
+    if ($opt != "") {
+        $opt_array = ["opt" => $opt, "topic_id" => $topic['id']];
+        insert('options', $opt_array);
+    }
 }
-
-?>
