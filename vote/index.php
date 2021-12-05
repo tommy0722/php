@@ -22,21 +22,22 @@
       <!-- 輪播圖 -->
       <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-ride="carousel">
         <div class="carousel-inner position-absolute" style="top:-250px">
-          <div class="carousel-item active">
             <?php
+            // 取得資料表中狀態為1的廣告圖片
             $images=all('ad',['sh'=>1]);
+            // 用迴圈來跑每一筆廣套圖片依照HTML格式顯示在網頁上
             foreach ($images as $key => $value) {
-              # code...
+              // 判斷如果是第一筆，會加入一個active的class
+              if ($key==0) {
+                echo "<div class='carousel-item active'>";
+              }else{
+                echo "<div class='carousel-item'>";
+              }
+              // 帶入圖片資訊
+              echo "<img class 'd-block w-100' src='image/{$image['name']}' title='{$image['intro']}'>";
+              echo "<div>";
             }
             ?>
-
-            <img class="d-block w-100 " src="./image/dessert-01.jpg" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="./image/dessert-07.jpg" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="./image/dessert-06.jpg" alt="Third slide">
           </div>
         </div>
       </div>
