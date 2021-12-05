@@ -94,7 +94,7 @@ function update($table,$column,$where){
         $sql_where=$sql_where . "`$key`='$value' AND ";
     }
     // 還在想怎麼註解
-    $sql_whFere=mb_substr($sql_where,0,mb_strlen($sql_where)-5);;
+    $sql_where=mb_substr($sql_where,0,mb_strlen($sql_where)-5);;
     // echo $sql_where;
     mb_substr($sql_where,0,mb_strlen($sql_where)-5);
     $sql="UPDATE `$table` SET $sql_set WHERE $sql_where ";
@@ -128,7 +128,7 @@ function del($table,$id){
     }
     return $pdo->exec($sql);
  }
-
+// 導向網站
 function to($url){
     header("location:".$url);
 }
