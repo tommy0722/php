@@ -9,7 +9,9 @@
   <title>問卷系統</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <style>
-
+      .container{
+        min-height: 544px;
+        }
   </style>
 </head>
 
@@ -17,9 +19,17 @@
 
   <div class="jumbotron p-0 mb-0" style="overflow:hidden;height:250px">
     <a href="index.php">
+      <!-- 輪播圖 -->
       <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-ride="carousel">
         <div class="carousel-inner position-absolute" style="top:-250px">
           <div class="carousel-item active">
+            <?php
+            $images=all('ad',['sh'=>1]);
+            foreach ($images as $key => $value) {
+              # code...
+            }
+            ?>
+
             <img class="d-block w-100 " src="./image/dessert-01.jpg" alt="First slide">
           </div>
           <div class="carousel-item">
@@ -35,25 +45,25 @@
   <nav class="bg-light shadow py-3 text-center mb-4x">
     <div>&nbsp;</div>
     <?php
-    if(isset($_SESSION['error'])){
+    if (isset($_SESSION['error'])) {
       echo $_SESSION['error'];
     }
 
-    if(isset($_SESSION['user'])){
+    if (isset($_SESSION['user'])) {
       echo "<span class='pr-5'>歡迎!!{$_SESSION['user']}</span>";
-      ?>
-    <div class="float-right">
-    <a class="btn btn-sm btn-primary mx-1" href="logout.php">登出</a>
+    ?>
+      <div class="float-right">
+        <a class="btn btn-sm btn-primary mx-1" href="logout.php">登出</a>
 
-    </div>
-     <?php
-    }else{
-      ?> 
+      </div>
+    <?php
+    } else {
+    ?>
 
-    <div class="float-right">
-    <a class="btn btn-sm btn-primary mx-1" href="?do=login">會員登入</a>
-    <a class="btn btn-sm btn-info mx-1" href="?do=reg">註冊新會員</a>
-    </div>
+      <div class="float-right">
+        <a class="btn btn-sm btn-primary mx-1" href="?do=login">會員登入</a>
+        <a class="btn btn-sm btn-info mx-1" href="?do=reg">註冊新會員</a>
+      </div>
     <?php
     }
     ?>

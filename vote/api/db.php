@@ -21,6 +21,7 @@
             // implode：在陣列中加入字串
             $sql=$sql. implode(" AND ",$tmp);
         }else{
+
             $sql=$sql . "`id`='$id'";
         }
 
@@ -37,7 +38,7 @@
             }
             
             $sql=$sql. implode(" AND ",$tmp);
-            // 取得一個欄位資料
+            // 取得第一欄位資料
         return $pdo->query($sql)->fetchColumn();
     }
 
@@ -93,30 +94,27 @@ function update($table,$column,$where){
         $sql_where=$sql_where . "`$key`='$value' AND ";
     }
     // 還在想怎麼註解
-    $sql_where=mb_substr($sql_where,0,mb_strlen($sql_where)-5);;
+    $sql_whFere=mb_substr($sql_where,0,mb_strlen($sql_where)-5);;
     // echo $sql_where;
     mb_substr($sql_where,0,mb_strlen($sql_where)-5);
     $sql="UPDATE `$table` SET $sql_set WHERE $sql_where ";
     echo $sql . "<br>";
     $pdo->exec($sql);
- }
+}
 
 
- function insert($table,$array){
-     global $pdo;
-
-
-     $sql="INSERT into $table(`" . implode('`,`',array_keys($array)) . "`) 
+function insert($table,$array){
+    global $pdo;
+    $sql="INSERT into $table(`" . implode('`,`',array_keys($array)) . "`) 
                         value('" . implode("','",$array) ."')";
-
     echo $sql."<br>";
     return $pdo->exec($sql);
 
- }
+}
 
 
 
- function del($table,$id){
+function del($table,$id){
     global $pdo;
     $sql="DELETE FROM `$table` WHERE ";
     if(is_array($id)){
