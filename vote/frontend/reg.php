@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <td>電子郵件：</td>
-                <td><input type="text" name="mail" id=""></td>
+                <td><input type="text" name="email" id=""></td>
             </tr>
             <tr>
                 <td>姓名：</td>
@@ -20,6 +20,10 @@
             <tr>
                 <td>生日：</td>
                 <td><input type="date" name="birthday" id=""></td>
+            </tr>
+            <tr>
+                <td>性別：</td>
+                <td><input type="text" name="gender"></td>
             </tr>
         </table>
         <div><input type="submit" value="確認送出"> </div>
