@@ -8,8 +8,8 @@ foreach ($subjects as $key => $value) {
     //題目
     if(isset($_SESSION['user'])){
         echo "<a class='d-inline-block col-md-8' href='index.php?do=vote&id={$value['id']}'>";
-        echo $value['topic'];
         echo $value['id'];
+        echo $value['topic'];
         echo "</a>";
 
     }else{
