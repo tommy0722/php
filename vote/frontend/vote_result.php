@@ -1,9 +1,9 @@
 <?php
 
 $sql = "select * 
-        from `topics`,
+    from `topics`,
         `options` 
-        where `topics`.`id`=`options`.`topic_id` AND 
+    where `topics`.`id`=`options`.`topic_id` AND 
             `topics`.`id`='{$_GET['id']}'";
 
 $rows = q($sql);

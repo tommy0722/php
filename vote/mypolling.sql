@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-12-03 09:31:53
+-- 產生時間： 2021-12-03 09:38:01
 -- 伺服器版本： 10.4.21-MariaDB
 -- PHP 版本： 7.4.23
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- 資料庫: `mypolling`
 --
-CREATE DATABASE IF NOT EXISTS `mypolling` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;
-USE `mypolling`;
 
 -- --------------------------------------------------------
 
@@ -30,11 +28,19 @@ USE `mypolling`;
 --
 
 CREATE TABLE `ad` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(64) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `sh` tinyint(1) UNSIGNED NOT NULL,
   `intro` varchar(64) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- 傾印資料表的資料 `ad`
+--
+
+INSERT INTO `ad` (`id`, `name`, `sh`, `intro`) VALUES
+(8, 'image-06.jpg', 1, '準備睡覺的小花'),
+(9, 'image-10.jpg', 1, '金針花海');
 
 -- --------------------------------------------------------
 
@@ -44,10 +50,10 @@ CREATE TABLE `ad` (
 
 CREATE TABLE `options` (
   `id` int(11) UNSIGNED NOT NULL,
-  `opt` varchar(128) NOT NULL,
-  `count` int(128) UNSIGNED NOT NULL,
-  `topic_id` int(128) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `opt` varchar(128) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `count` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `topic_id` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- 傾印資料表的資料 `options`
@@ -58,15 +64,19 @@ INSERT INTO `options` (`id`, `opt`, `count`, `topic_id`) VALUES
 (2, '短袖', 1, 5),
 (3, '長袖', 0, 5),
 (4, '汗衫', 2, 5),
-(5, '我想下課', 3, 2),
-(6, '', 0, 2),
-(7, '', 0, 2),
-(8, '粥', 0, 1),
-(9, 'M', 0, 1),
-(10, '麵', 0, 1),
-(11, '肯德基', 0, 1),
-(12, '回家', 1, 3),
-(13, '1111', 0, 3);
+(9, '粥', 0, 1),
+(10, 'M', 0, 1),
+(11, '麵', 0, 1),
+(13, '回家', 1, 3),
+(17, '1111', 0, 3),
+(21, '大披薩', 0, 2),
+(22, '肯德基', 0, 2),
+(24, '酸辣粉', 0, 2),
+(25, '李家肉羹', 0, 2),
+(27, '好', 0, 6),
+(28, '不好', 1, 6),
+(29, '想吃飯', 0, 6),
+(30, '減肥中', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -76,27 +86,27 @@ INSERT INTO `options` (`id`, `opt`, `count`, `topic_id`) VALUES
 
 CREATE TABLE `topics` (
   `id` int(11) UNSIGNED NOT NULL,
-  `topic` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `topic` varchar(128) COLLATE utf8mb4_unicode_520_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- 傾印資料表的資料 `topics`
 --
 
 INSERT INTO `topics` (`id`, `topic`) VALUES
-(1, '問卷主題'),
-(2, '喜歡的亞洲音樂'),
-(3, '星期一'),
-(4, '星期二'),
-(5, '喜歡的水果');
+(1, '今天晚餐吃什麼'),
+(2, '亂打一通'),
+(3, '最後一次了'),
+(5, '明天穿什麼好?'),
+(6, '今晚吃火鍋好不?');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `user`
+-- 資料表結構 `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `account` varchar(12) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `password` varchar(12) COLLATE utf8mb4_unicode_520_ci NOT NULL,
@@ -105,6 +115,13 @@ CREATE TABLE `user` (
   `gender` varchar(1) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `birthday` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- 傾印資料表的資料 `users`
+--
+
+INSERT INTO `users` (`id`, `account`, `password`, `email`, `name`, `gender`, `birthday`) VALUES
+(1, 'mack', '1234', 'macklun@ms7.hinet.net', '劉勤永', '男', '1974-10-07');
 
 --
 -- 已傾印資料表的索引
@@ -129,9 +146,9 @@ ALTER TABLE `topics`
   ADD PRIMARY KEY (`id`);
 
 --
--- 資料表索引 `user`
+-- 資料表索引 `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -142,25 +159,25 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `ad`
 --
 ALTER TABLE `ad`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `user`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
-ALTER TABLE `user`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

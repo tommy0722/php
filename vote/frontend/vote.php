@@ -18,6 +18,5 @@ foreach ($options as $key => $opt) {
 }
 ?>
 </ol>
-<input type="submit" value="投票">
+<input class='btn btn-info mt-3' type="submit" value="投票">
 </form>   
-
